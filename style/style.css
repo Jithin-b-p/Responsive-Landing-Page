@@ -113,7 +113,6 @@ svg {
   }
 }
 
-
 /* general styling */
 
 body {
@@ -134,7 +133,7 @@ p[data-width="wide"] {
 /* button */
 
 .button {
-  display: none;
+  display: inline-flex;
   cursor: pointer;
   text-decoration: none;
   border: 0;
@@ -208,10 +207,14 @@ p[data-width="wide"] {
     padding: var(--size-700);
     inset: 7rem var(--size-400) auto;
     max-width: 30rem;
-    margin-left: auto; 
+    margin-left: auto;
     background: var(--clr-neutral-100);
     border-radius: var(--size-100);
     box-shadow: 0 0 0.75em rgb(0, 0, 0, 0.05);
+  }
+
+  .display-sm-none {
+    display: none;
   }
 
   .primary-header[data-overlay]::after {
@@ -252,7 +255,7 @@ p[data-width="wide"] {
     border: none;
     padding: 0.5em;
   }
-  
+
   .mobile-nav-toggle .icon-hamburger[data-visible] {
     display: none;
   }
@@ -266,6 +269,30 @@ p[data-width="wide"] {
   position: fixed;
 }
 
+/* cta */
+.cta {
+  position: relative;
+  isolation: isolate;
+  text-align: center;
+}
+
+@media (min-width: 50em) {
+  .cta {
+    text-align: left;
+  }
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: url("../images/bg-tablet-pattern.svg"),
+    url("../images/bg-tablet-pattern.svg");
+  background-position: -15rem -5rem, 60rem -42rem;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+}
 /* utility classes */
 
 .visually-hidden {
@@ -284,13 +311,8 @@ p[data-width="wide"] {
 .container {
   --max-width: 1110px;
   --padding: 1rem;
-
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
-}
-
-:where(.flow > :not(:first-child)) {
-  margin-top: var(--flow-spacer, 3em);
 }
 
 .even-columns {
@@ -305,8 +327,21 @@ p[data-width="wide"] {
   }
 }
 
-@media (min-width: 50em) {
+.vertical-align-center {
+  align-items: center;
+}
 
+@media (min-width: 50em) {
+  .justify-self-end-md {
+    justify-self: end;
+  }
+}
+
+:where(.flow > :not(:first-child)) {
+  margin-top: var(--flow-spacer, 3em);
+}
+
+@media (min-width: 50em) {
   .display-md-inline-flex {
     display: inline-flex;
   }
@@ -379,6 +414,3 @@ p[data-width="wide"] {
 .padding-block-700 {
   padding-block: var(--size-700);
 }
-
-
-
