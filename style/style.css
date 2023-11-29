@@ -152,6 +152,10 @@ p[data-width="wide"] {
   color: var(--clr-accent-400);
 }
 
+.button[data-shadow="none"] {
+  box-shadow: none;
+}
+
 .button:hover,
 .button:focus-visible {
   background-color: var(--clr-accent-500);
@@ -264,11 +268,110 @@ p[data-width="wide"] {
   }
 }
 
-.opened {
-  display: block;
-  position: fixed;
+/* footer */
+.primary-footer {
+  --logo-color: var(--clr-neutral-100);
 }
 
+.primary-footer-wrapper {
+  display: grid;
+  grid-template-areas:
+    "form"
+    "nav"
+    "logo-social";
+  gap: var(--size-800);
+}
+
+.primary-footer-logo-social {
+  grid-area: logo-social;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--size-800);
+  align-items: center;
+}
+
+.primary-footer-nav {
+  grid-area: nav;
+}
+.primary-footer-form {
+  grid-area: form;
+
+  display: grid;
+  align-content: space-between;
+}
+.primary-footer form {
+  display: flex;
+  gap: var(--size-200);
+}
+input:where([type="email"], [type="text"]) {
+  border-radius: 100vw;
+  border: 0;
+  padding: var(--size-300) var(--size-400);
+}
+
+@media (min-width: 50em) {
+  .primary-footer-wrapper {
+    grid-template-areas: "logo-social nav form";
+  }
+  .primary-footer-logo-social {
+    align-items: start;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 50em) {
+  .primary-footer-wrapper > * {
+    margin-inline: auto;
+  }
+
+  .
+}
+/* footer navigatibuttinn */
+
+.footer-nav {
+  columns: 2;
+  gap: min(20vw, 7rem);
+}
+
+.footer-nav a {
+  color: var(--clr-neutral-100);
+  text-decoration: none;
+}
+
+.footer-nav a:where(:hover, :focus) {
+  color: var(--clr-accent-400);
+}
+/* logo */
+.logo {
+  width: 9.125rem;
+  height: 1.5rem;
+}
+
+/* social list */
+.social-list {
+  display: flex;
+  gap: var(--size-600);
+}
+
+.social-icon {
+  width: var(--size-600);
+  aspect-ratio: 1;
+  fill: var(--clr-neutral-100);
+}
+
+.social-list a:is(:hover, :focus) .social-icon {
+  fill: var(--clr-accent-400);
+}
+
+@media (min-width: 50em) {
+  .social-icon {
+    width: var(--size-500);
+  }
+  .social-list {
+    gap: var(--size-300);
+  }
+}
 /* cta */
 .cta {
   position: relative;
